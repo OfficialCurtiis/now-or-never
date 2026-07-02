@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>NOW OR NEVER — 90-Day Discipline Challenge. Free. No signup.</title>
+<meta name="description" content="Pick your rules. Check in every day. Miss a day, back to day one. A free discipline challenge tracker — no account, no subscription, your data stays on your phone.">
+<meta property="og:title" content="NOW OR NEVER — Stop choosing never.">
+<meta property="og:description" content="90 days. Your rules. No excuses. Free discipline challenge tracker.">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="NOW OR NEVER">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="icon" href="icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a; --card:#141414; --card2:#1b1b1b; --line:#262626;
+  --red:#e5192e; --red-dark:#a80f1f; --txt:#f2f2f2; --dim:#9a9a9a; --dim2:#6b6b6b;
+  --ok:#2fbf5f;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:Inter,system-ui,sans-serif;line-height:1.5;overflow-x:hidden}
+.anton{font-family:Anton,Impact,sans-serif;font-weight:400;letter-spacing:.01em;text-transform:uppercase}
+.wrap{max-width:560px;margin:0 auto;padding:0 20px}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer;border:none}
+.btn{display:inline-block;background:var(--red);color:#fff;font-family:Anton,Impact,sans-serif;text-transform:uppercase;font-size:20px;letter-spacing:.04em;padding:16px 34px;border-radius:6px;text-align:center;text-decoration:none;transition:transform .08s, background .15s}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--txt);font-size:16px;padding:13px 22px}
+.btn.small{font-size:15px;padding:11px 18px}
+.btn.wide{width:100%}
+.tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+.lock{opacity:.55}
+/* ---------- LANDING ---------- */
+#landing header{padding:22px 0;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:Anton,Impact,sans-serif;font-size:18px;letter-spacing:.06em}
+.logo span{color:var(--red)}
+.hero{padding:52px 0 34px;text-align:left}
+.hero h1{font-family:Anton,Impact,sans-serif;font-size:clamp(58px,15vw,96px);line-height:.95;text-transform:uppercase}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero p.sub{margin:22px 0 8px;font-size:18px;color:var(--dim);max-width:420px}
+.hero p.sub b{color:var(--txt)}
+.hero .cta-row{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.microtrust{margin-top:14px;font-size:13px;color:var(--dim2)}
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;margin:26px 0;overflow:hidden;white-space:nowrap}
+.strip .inner{display:inline-block;animation:marq 18s linear infinite;font-family:Anton,Impact,sans-serif;font-size:15px;letter-spacing:.12em;color:var(--dim)}
+@keyframes marq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.how{padding:34px 0}
+.how h2, .sec h2{font-family:Anton,Impact,sans-serif;font-size:34px;text-transform:uppercase;margin-bottom:22px}
+.how .step{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.how .num{font-family:Anton,Impact,sans-serif;color:var(--red);font-size:26px;min-width:34px}
+.how .step h3{font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:.03em}
+.how .step p{color:var(--dim);font-size:14.5px;margin-top:3px}
+/* ---------- SETUP ---------- */
+.sec{padding:38px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px}
+.opt-row{display:flex;gap:10px;margin:14px 0 6px}
+.opt{flex:1;background:var(--card2);border:1.5px solid var(--line);border-radius:10px;padding:14px 6px;text-align:center;color:var(--dim);transition:.12s}
+.opt .big{display:block;font-family:Anton,Impact,sans-serif;font-size:26px;color:var(--txt)}
+.opt.sel{border-color:var(--red);color:var(--txt);background:#1f1113}
+.opt small{font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
+.rule-pick{background:var(--card2);border:1.5px solid var(--line);border-radius:10px;padding:12px 12px;font-size:13.5px;font-weight:600;color:var(--dim);display:flex;align-items:center;gap:8px;transition:.12s;user-select:none}
+.rule-pick.sel{border-color:var(--red);color:var(--txt);background:#1f1113}
+.rule-pick .em{font-size:17px}
+.hint{font-size:12.5px;color:var(--dim2);margin-top:10px}
+.custom-locked{margin-top:14px;background:var(--card2);border:1.5px dashed var(--line);border-radius:10px;padding:14px;font-size:13.5px;color:var(--dim);display:flex;justify-content:space-between;align-items:center;gap:10px}
+.custom-locked a{color:var(--red);font-weight:800;text-decoration:none;white-space:nowrap}
+#customRuleRow{margin-top:14px;display:flex;gap:8px}
+#customRuleRow input{flex:1;background:var(--card2);border:1.5px solid var(--line);border-radius:10px;padding:12px;color:var(--txt);font-size:14px;outline:none}
+#customRuleRow input:focus{border-color:var(--red)}
+/* ---------- APP ---------- */
+#app{display:none;min-height:100vh;padding-bottom:110px}
+#app header{padding:18px 0;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}
+.daybox{text-align:center;padding:34px 0 10px}
+.daybox .lbl{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--dim)}
+.daybox .n{font-family:Anton,Impact,sans-serif;font-size:120px;line-height:1;color:var(--txt)}
+.daybox .of{font-family:Anton,Impact,sans-serif;font-size:20px;color:var(--red);letter-spacing:.1em}
+.daybox .date{margin-top:8px;font-size:13px;color:var(--dim2)}
+.streakrow{display:flex;justify-content:center;gap:26px;padding:14px 0 6px}
+.streakrow .s{text-align:center}
+.streakrow .s b{font-family:Anton,Impact,sans-serif;font-size:24px;display:block}
+.streakrow .s span{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim2)}
+.checklist{margin-top:18px}
+.chk{background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:16px;margin-bottom:10px;display:flex;align-items:center;gap:14px;font-weight:600;font-size:15.5px;transition:.15s;user-select:none}
+.chk .box{width:26px;height:26px;border:2px solid var(--dim2);border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:15px;color:#fff;transition:.15s}
+.chk.done{border-color:var(--red);background:#1f1113}
+.chk.done .box{background:var(--red);border-color:var(--red)}
+.chk.done .t{text-decoration:line-through;color:var(--dim)}
+.complete-banner{display:none;background:var(--red);border-radius:12px;padding:18px;text-align:center;font-family:Anton,Impact,sans-serif;font-size:22px;letter-spacing:.04em;margin-top:6px}
+.grid-cal{margin-top:30px}
+.grid-cal h3, .apptools h3{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+.dots{display:grid;grid-template-columns:repeat(10,1fr);gap:7px}
+.dot{aspect-ratio:1;border-radius:5px;background:var(--card2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--dim2)}
+.dot.done{background:var(--red);border-color:var(--red);color:#fff}
+.dot.missed{background:#2a1215;border-color:#4d1d24;color:#7a3540}
+.dot.today{border-color:var(--txt);color:var(--txt)}
+.apptools{margin-top:34px}
+.tool{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.tool .l{font-weight:700;font-size:14.5px}
+.tool .l small{display:block;font-weight:400;color:var(--dim2);font-size:12px;margin-top:2px}
+.tool button, .tool a.btn{white-space:nowrap}
+.probar{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(0deg,#000 60%,transparent);padding:14px 20px 20px}
+.probar .inner{max-width:560px;margin:0 auto;display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.probar .txt{flex:1;font-size:12.5px;color:var(--dim);line-height:1.35}
+.probar .txt b{color:var(--txt);display:block;font-size:13.5px}
+/* ---------- PROTOCOL SECTION ---------- */
+.proto{background:linear-gradient(180deg,#160c0e,#0a0a0a);border-top:1px solid #3a1219;border-bottom:1px solid #3a1219;padding:44px 0}
+.proto h2{font-family:Anton,Impact,sans-serif;font-size:40px;text-transform:uppercase;line-height:1.02}
+.proto h2 span{color:var(--red)}
+.proto .items{margin:22px 0}
+.proto .it{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid #241317;font-size:14.5px;color:var(--dim)}
+.proto .it b{color:var(--txt)}
+.proto .it .ic{color:var(--red);font-weight:800}
+.price-row{display:flex;align-items:baseline;gap:12px;margin:18px 0 6px}
+.price-row .p{font-family:Anton,Impact,sans-serif;font-size:44px}
+.price-row .note{color:var(--dim2);font-size:13px}
+.already{margin-top:14px;font-size:13px;color:var(--dim2)}
+.already a{color:var(--dim);cursor:pointer;text-decoration:underline}
+/* ---------- MODALS ---------- */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.82);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
+.modal{background:var(--card);border:1px solid var(--line);border-radius:16px;max-width:420px;width:100%;padding:26px;text-align:center}
+.modal h3{font-family:Anton,Impact,sans-serif;font-size:30px;text-transform:uppercase;line-height:1.05}
+.modal h3.red{color:var(--red)}
+.modal p{color:var(--dim);font-size:14.5px;margin:12px 0 20px}
+.modal .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.modal input{width:100%;background:var(--card2);border:1.5px solid var(--line);border-radius:10px;padding:13px;color:var(--txt);font-size:14px;outline:none;margin-bottom:14px;text-align:center}
+.modal input:focus{border-color:var(--red)}
+.err{color:var(--red);font-size:13px;min-height:18px;margin-bottom:6px}
+footer{padding:36px 20px 46px;text-align:center;color:var(--dim2);font-size:12px;border-top:1px solid var(--line);margin-top:40px}
+footer .logo{font-size:14px;margin-bottom:8px}
+@media (max-width:420px){ .rules-grid{grid-template-columns:1fr} .dots{grid-template-columns:repeat(9,1fr)} }
+</style>
+</head>
+<body>
+
+<!-- ============ LANDING / SETUP ============ -->
+<div id="landing">
+  <div class="wrap">
+    <header>
+      <div class="logo">NOW OR <span>NEVER</span></div>
+      <a href="#protocol" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);text-decoration:none">The Protocol</a>
+    </header>
+
+    <section class="hero">
+      <div class="tag">Free · No signup · No subscription</div>
+      <h1>It's now<br>or <em>never.</em></h1>
+      <p class="sub">Pick your rules. Check in every single day. <b>Miss a day and you go back to day one.</b> That's the whole app. That's the point.</p>
+      <div class="cta-row">
+        <a class="btn" href="#setup">Start Day One</a>
+        <a class="btn ghost" href="#how">How it works</a>
+      </div>
+      <p class="microtrust">Runs in your browser. Your data never leaves your phone.</p>
+    </section>
+  </div>
+
+  <div class="strip"><div class="inner">STOP CHOOSING NEVER&nbsp;&nbsp;·&nbsp;&nbsp;DISCIPLINE OVER MOTIVATION&nbsp;&nbsp;·&nbsp;&nbsp;NO ZERO DAYS&nbsp;&nbsp;·&nbsp;&nbsp;DAY ONE, NOT ONE DAY&nbsp;&nbsp;·&nbsp;&nbsp;STOP CHOOSING NEVER&nbsp;&nbsp;·&nbsp;&nbsp;DISCIPLINE OVER MOTIVATION&nbsp;&nbsp;·&nbsp;&nbsp;NO ZERO DAYS&nbsp;&nbsp;·&nbsp;&nbsp;DAY ONE, NOT ONE DAY&nbsp;&nbsp;·&nbsp;&nbsp;</div></div>
+
+  <div class="wrap">
+    <section class="how" id="how">
+      <h2>The Deal</h2>
+      <div class="step"><div class="num">01</div><div><h3>Set your rules</h3><p>3 to 7 non-negotiables. Train. Read. No porn. No alcohol. Cold shower. Your call — but once you start, they're locked.</p></div></div>
+      <div class="step"><div class="num">02</div><div><h3>Check in daily</h3><p>Every rule, every day. All boxes or the day doesn't count. No retroactive edits. Yesterday is gone.</p></div></div>
+      <div class="step"><div class="num">03</div><div><h3>Miss = Day One</h3><p>Hard mode sends you back to the start. You don't negotiate with your own standards.</p></div></div>
+      <div class="step"><div class="num">04</div><div><h3>Post the proof</h3><p>Generate your day card and put it on your story. Public pressure is free accountability.</p></div></div>
+    </section>
+
+    <!-- SETUP -->
+    <section class="sec" id="setup">
+      <h2>Build your challenge</h2>
+
+      <div class="card">
+        <b style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)">Length</b>
+        <div class="opt-row" id="lenRow">
+          <div class="opt" data-len="30"><span class="big">30</span><small>days</small></div>
+          <div class="opt" data-len="60"><span class="big">60</span><small>days</small></div>
+          <div class="opt sel" data-len="90"><span class="big">90</span><small>days</small></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <b style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)">Mode</b>
+        <div class="opt-row" id="modeRow">
+          <div class="opt sel" data-mode="hard"><span class="big" style="font-size:19px;padding-top:4px">HARD</span><small>miss = day one</small></div>
+          <div class="opt" data-mode="strike"><span class="big" style="font-size:19px;padding-top:4px">3 STRIKES</span><small>3 misses = fail</small></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <b style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)">Rules — pick 3 to 7</b>
+        <div class="rules-grid" id="rulesGrid"></div>
+        <div class="hint" id="ruleCount">0 selected</div>
+        <div class="custom-locked" id="customLocked">
+          <span>🔒 Write your own rules</span><a href="#protocol">PROTOCOL →</a>
+        </div>
+        <div id="customRuleRow" style="display:none">
+          <input id="customRuleInput" maxlength="40" placeholder="Your own rule…">
+          <button class="btn small" onclick="addCustomRule()">Add</button>
+        </div>
+      </div>
+
+      <button class="btn wide" onclick="confirmStart()">START — DAY ONE IS TODAY</button>
+      <p class="hint" style="text-align:center;margin-top:10px">Not Monday. Not the 1st. Today.</p>
+    </section>
+  </div>
+
+  <!-- PROTOCOL UPSELL -->
+  <section class="proto" id="protocol">
+    <div class="wrap">
+      <div class="tag">One-time. Not a subscription.</div>
+      <h2>The tracker is free.<br><span>The Protocol</span> is the weapon.</h2>
+      <div class="items">
+        <div class="it"><span class="ic">→</span><div><b>The Protocol (PDF)</b> — the full system: how to choose rules you'll actually keep, the morning and evening structure, the reset protocol for when you fail, and the weekly review that keeps you honest for 90 days.</div></div>
+        <div class="it"><span class="ic">→</span><div><b>Printable 90-day wall chart</b> — put it where you sleep. Cross the days off by hand.</div></div>
+        <div class="it"><span class="ic">→</span><div><b>Phone wallpaper pack</b> — your lock screen calls you out every time you reach for a scroll.</div></div>
+        <div class="it"><span class="ic">→</span><div><b>Pro unlock in the tracker</b> — write custom rules, see your stats and your weakest rule, generate wallpapers, print your chart.</div></div>
+      </div>
+      <div class="price-row"><span class="p">$19</span><span class="note">one payment · yours forever · instant download</span></div>
+      <a class="btn" id="buyBtn1" href="https://risxmain.gumroad.com/l/protocol">Get The Protocol</a>
+      <p class="already">Already bought it? <a onclick="openLicense()">Enter your license key</a></p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="sec">
+      <h2>Straight answers</h2>
+      <div class="card"><b>Why is the tracker free?</b><p style="color:var(--dim);font-size:14px;margin-top:6px">Because the tracker isn't the hard part. Doing it every day is. If the free version gets you moving, good. The Protocol exists for the ones who want the full system.</p></div>
+      <div class="card"><b>Where's my data?</b><p style="color:var(--dim);font-size:14px;margin-top:6px">On your device, in your browser. No account, no server, nothing to leak. Clear your browser data and it's gone — export a backup from the menu if you care.</p></div>
+      <div class="card"><b>Is this 75 Hard?</b><p style="color:var(--dim);font-size:14px;margin-top:6px">No. 75 Hard is a specific trademarked program with fixed rules. This is your own challenge with your own rules. Harder to fake, easier to own.</p></div>
+    </section>
+  </div>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="app">
+  <div class="wrap">
+    <header>
+      <div class="logo">NOW OR <span>NEVER</span></div>
+      <button class="btn ghost small" onclick="openMenu()">Menu</button>
+    </header>
+
+    <div class="daybox">
+      <div class="lbl">You are on</div>
+      <div class="n anton" id="dayNum">1</div>
+      <div class="of" id="dayOf">OF 90</div>
+      <div class="date" id="todayDate"></div>
+    </div>
+
+    <div class="streakrow">
+      <div class="s"><b id="stCurrent">0</b><span>streak</span></div>
+      <div class="s"><b id="stBest">0</b><span>best</span></div>
+      <div class="s"><b id="stResets">0</b><span id="stResetsLbl">resets</span></div>
+    </div>
+
+    <div class="checklist" id="checklist"></div>
+    <div class="complete-banner" id="completeBanner">DAY COMPLETE. SEE YOU TOMORROW.</div>
+
+    <div class="grid-cal">
+      <h3>The whole war</h3>
+      <div class="dots" id="dots"></div>
+    </div>
+
+    <div class="apptools">
+      <h3>Tools</h3>
+      <div class="tool">
+        <div class="l">Day card<small>1080×1920 — post it to your story</small></div>
+        <button class="btn small" onclick="makeShareCard()">Generate</button>
+      </div>
+      <div class="tool" id="toolStats">
+        <div class="l">Your stats<small>Best streak, resets, your weakest rule</small></div>
+        <button class="btn small ghost" onclick="proGate('stats')">Open</button>
+      </div>
+      <div class="tool" id="toolWalls">
+        <div class="l">Wallpaper generator<small>Lock screens that call you out</small></div>
+        <button class="btn small ghost" onclick="proGate('walls')">Open</button>
+      </div>
+      <div class="tool" id="toolPrint">
+        <div class="l">Printable wall chart<small>Cross days off by hand, by your bed</small></div>
+        <button class="btn small ghost" onclick="proGate('print')">Print</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="probar" id="probar">
+    <div class="inner">
+      <div class="txt"><b>The Protocol — $19 one-time</b>Full system PDF + wall chart + wallpapers + Pro unlock.</div>
+      <a class="btn small" id="buyBtn2" href="https://risxmain.gumroad.com/l/protocol">Get it</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODALS ============ -->
+<div class="modal-bg" id="mConfirm"><div class="modal">
+  <h3>This starts <span style="color:var(--red)">now.</span></h3>
+  <p id="confirmTxt"></p>
+  <div class="row">
+    <button class="btn" onclick="startChallenge()">I'm in. Day One.</button>
+    <button class="btn ghost" onclick="closeModal('mConfirm')">Not ready</button>
+  </div>
+</div></div>
+
+<div class="modal-bg" id="mReset"><div class="modal">
+  <h3 class="red" id="resetTitle">You missed a day.</h3>
+  <p id="resetTxt">Back to Day One. You knew the deal. The reset isn't the punishment — staying average is.</p>
+  <div class="row"><button class="btn" onclick="ackReset()">Day One. Again.</button></div>
+</div></div>
+
+<div class="modal-bg" id="mDone"><div class="modal">
+  <h3 id="doneTitle">Challenge complete.</h3>
+  <p id="doneTxt"></p>
+  <div class="row">
+    <button class="btn" onclick="makeShareCard();">Make the proof card</button>
+    <button class="btn ghost" onclick="finishAndNew()">Start a new challenge</button>
+  </div>
+</div></div>
+
+<div class="modal-bg" id="mMenu"><div class="modal" style="text-align:left">
+  <h3 style="font-size:22px">Menu</h3>
+  <div style="display:flex;flex-direction:column;gap:9px;margin-top:16px">
+    <button class="btn ghost small" onclick="closeModal('mMenu');openLicense()">Enter license key (restore Pro)</button>
+    <button class="btn ghost small" onclick="exportData()">Export backup</button>
+    <button class="btn ghost small" onclick="document.getElementById('importFile').click()">Import backup</button>
+    <button class="btn ghost small" style="border-color:#4d1d24;color:#c96773" onclick="abandon()">Abandon challenge</button>
+    <button class="btn small" onclick="closeModal('mMenu')">Close</button>
+  </div>
+  <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+</div></div>
+
+<div class="modal-bg" id="mLicense"><div class="modal">
+  <h3 style="font-size:24px">Unlock Pro</h3>
+  <p>Paste the license key from your Gumroad receipt email.</p>
+  <input id="licenseInput" placeholder="XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX" autocomplete="off">
+  <div class="err" id="licenseErr"></div>
+  <div class="row">
+    <button class="btn" id="licenseBtn" onclick="verifyLicense()">Unlock</button>
+    <button class="btn ghost" onclick="closeModal('mLicense')">Cancel</button>
+  </div>
+</div></div>
+
+<div class="modal-bg" id="mStats"><div class="modal" style="text-align:left">
+  <h3 style="font-size:24px">Your stats</h3>
+  <div id="statsBody" style="margin-top:14px;font-size:14px;color:var(--dim)"></div>
+  <div class="row" style="margin-top:18px"><button class="btn ghost" onclick="closeModal('mStats')">Close</button></div>
+</div></div>
+
+<div class="modal-bg" id="mWalls"><div class="modal">
+  <h3 style="font-size:24px">Wallpapers</h3>
+  <p>Pick a line. Downloads as a 1080×1920 lock screen.</p>
+  <div style="display:flex;flex-direction:column;gap:9px" id="wallBtns"></div>
+  <div class="row" style="margin-top:16px"><button class="btn ghost" onclick="closeModal('mWalls')">Close</button></div>
+</div></div>
+
+<!-- print chart -->
+<div id="printChart" style="display:none"></div>
+
+<canvas id="cardCanvas" width="1080" height="1920" style="display:none"></canvas>
+
+<footer>
+  <div class="logo">NOW OR <span>NEVER</span></div>
+  <div>Stop choosing never.</div>
+  <div style="margin-top:10px;max-width:420px;margin-left:auto;margin-right:auto">Not medical, fitness, or mental-health advice. Choose rules that are safe for you and train within your limits.</div>
+</footer>
+
+<script>
+/* ================= CONFIG ================= */
+const GUMROAD_URL = "https://risxmain.gumroad.com/l/protocol";
+const SITE_URL = "now-or-never.vercel.app";
+const PRESETS = [
+  ["💪","Train 45 minutes"],
+  ["🌅","Wake up before 6 AM"],
+  ["🚫","No porn"],
+  ["🍺","No alcohol"],
+  ["🧊","Cold shower"],
+  ["📖","Read 10 pages"],
+  ["🎯","1 hour on your goal"],
+  ["📵","No mindless scrolling"],
+  ["💧","Drink 3L of water"],
+  ["🚶","Walk outside 30 min"],
+  ["🛏️","Make your bed"],
+  ["✍️","Journal 5 minutes"],
+  ["🎮","No video games"],
+  ["🍔","No junk food"],
+  ["🧘","Meditate 10 minutes"],
+  ["😴","In bed by 10:30 PM"],
+];
+const WALL_LINES = [
+  "IT'S NOW OR NEVER",
+  "STOP CHOOSING NEVER",
+  "NO ZERO DAYS",
+  "DISCIPLINE OVER MOTIVATION",
+  "DAY ONE. NOT ONE DAY.",
+  "NOBODY IS COMING TO SAVE YOU",
+];
+
+/* ================= STATE ================= */
+const LS_KEY = "non_state_v1";
+let S = null; // {startDate, len, mode, rules:[{id,em,label}], days:{date:{ruleId:bool}}, resets, strikes, bestStreak, pro, license, completed}
+function load(){ try{ S = JSON.parse(localStorage.getItem(LS_KEY)); }catch(e){ S=null; } }
+function save(){ localStorage.setItem(LS_KEY, JSON.stringify(S)); }
+function todayStr(d){ const x = d||new Date(); return x.toLocaleDateString('en-CA'); }
+function dateAdd(iso, n){ const d = new Date(iso+"T12:00:00"); d.setDate(d.getDate()+n); return todayStr(d); }
+function daysBetween(a,b){ return Math.round((new Date(b+"T12:00:00") - new Date(a+"T12:00:00"))/86400000); }
+
+/* ================= SETUP UI ================= */
+let selLen = 90, selMode = "hard", selRules = new Set();
+function buildRuleGrid(){
+  const g = document.getElementById("rulesGrid"); g.innerHTML = "";
+  PRESETS.forEach((r,i)=>{
+    const el = document.createElement("div");
+    el.className = "rule-pick" + (selRules.has(i)?" sel":"");
+    el.innerHTML = `<span class="em">${r[0]}</span>${r[1]}`;
+    el.onclick = ()=>{
+      if(selRules.has(i)) selRules.delete(i);
+      else { if(countRules()>=7){ flashCount(); return; } selRules.add(i); }
+      buildRuleGrid();
+    };
+    g.appendChild(el);
+  });
+  customRules.forEach((cr,ci)=>{
+    const el = document.createElement("div");
+    el.className = "rule-pick sel";
+    el.innerHTML = `<span class="em">⭐</span>${escapeHtml(cr)} <span style="margin-left:auto;color:var(--dim2)">✕</span>`;
+    el.onclick = ()=>{ customRules.splice(ci,1); buildRuleGrid(); };
+    g.appendChild(el);
+  });
+  const c = countRules();
+  document.getElementById("ruleCount").textContent = c + " selected" + (c<3?" — pick at least 3":"") + (c>=7?" — that's the max":"");
+}
+let customRules = [];
+function countRules(){ return selRules.size + customRules.length; }
+function flashCount(){ const el=document.getElementById("ruleCount"); el.style.color="var(--red)"; setTimeout(()=>el.style.color="",700); }
+function addCustomRule(){
+  const inp = document.getElementById("customRuleInput");
+  const v = inp.value.trim();
+  if(!v) return;
+  if(countRules()>=7){ flashCount(); return; }
+  customRules.push(v); inp.value=""; buildRuleGrid();
+}
+function escapeHtml(s){ return s.replace(/[&<>"']/g, m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m])); }
+
+document.getElementById("lenRow").addEventListener("click", e=>{
+  const o = e.target.closest(".opt"); if(!o) return;
+  selLen = +o.dataset.len;
+  document.querySelectorAll("#lenRow .opt").forEach(x=>x.classList.toggle("sel", x===o));
+});
+document.getElementById("modeRow").addEventListener("click", e=>{
+  const o = e.target.closest(".opt"); if(!o) return;
+  selMode = o.dataset.mode;
+  document.querySelectorAll("#modeRow .opt").forEach(x=>x.classList.toggle("sel", x===o));
+});
+
+function confirmStart(){
+  if(countRules()<3){ flashCount(); window.scrollTo({top:document.getElementById("rulesGrid").offsetTop-100,behavior:"smooth"}); return; }
+  document.getElementById("confirmTxt").textContent =
+    `${selLen} days. ${countRules()} rules. ${selMode==="hard"?"Miss a day and you're back to Day One.":"Three missed days and it's over."} Rules lock the moment you start.`;
+  openModal("mConfirm");
+}
+function startChallenge(){
+  const rules = [];
+  [...selRules].forEach(i=>rules.push({id:"p"+i, em:PRESETS[i][0], label:PRESETS[i][1]}));
+  customRules.forEach((c,i)=>rules.push({id:"c"+i, em:"⭐", label:c}));
+  const pro = S && S.pro, lic = S && S.license;
+  S = { startDate: todayStr(), len: selLen, mode: selMode, rules, days:{}, resets:0, strikes:0, bestStreak:0, pro:!!pro, license:lic||null, completed:false };
+  save(); closeModal("mConfirm"); render();
+}
+
+/* ================= CORE LOGIC ================= */
+function dayIndex(){ return daysBetween(S.startDate, todayStr()); } // 0-based
+function isDayComplete(dateStr){
+  const d = S.days[dateStr]; if(!d) return false;
+  return S.rules.every(r=>d[r.id]);
+}
+function checkMisses(){
+  // called on load: look at days between startDate and yesterday
+  const idx = dayIndex();
+  let missed = [];
+  for(let i=0;i<idx;i++){
+    const ds = dateAdd(S.startDate,i);
+    if(!isDayComplete(ds)) missed.push(ds);
+  }
+  if(S.mode==="hard" && missed.length>0){
+    const reached = idx;
+    S.resets++; S.strikes=0;
+    S.startDate = todayStr(); S.days = {}; save();
+    document.getElementById("resetTitle").textContent = "You missed a day.";
+    document.getElementById("resetTxt").textContent = `You made it ${reached} day${reached===1?"":"s"}. Back to Day One. The reset isn't the punishment — staying average is.`;
+    openModal("mReset");
+  } else if(S.mode==="strike"){
+    const newMisses = missed.filter(d=>!(S.ackMissed||[]).includes(d));
+    if(newMisses.length){
+      S.ackMissed = (S.ackMissed||[]).concat(newMisses);
+      S.strikes = (S.ackMissed||[]).length;
+      if(S.strikes>=3){
+        const reached = idx;
+        S.resets++; S.strikes=0; S.ackMissed=[];
+        S.startDate = todayStr(); S.days={}; save();
+        document.getElementById("resetTitle").textContent = "Strike three.";
+        document.getElementById("resetTxt").textContent = `Three missed days. You made it ${reached} days. Challenge over — back to Day One.`;
+        openModal("mReset");
+      } else {
+        save();
+        document.getElementById("resetTitle").textContent = `Strike ${S.strikes}.`;
+        document.getElementById("resetTxt").textContent = `You missed ${newMisses.length} day${newMisses.length===1?"":"s"}. ${3-S.strikes} strike${3-S.strikes===1?"":"s"} left. Tighten up.`;
+        openModal("mReset");
+      }
+    }
+  }
+  // completion
+  if(!S.completed && dayIndex()>=S.len){
+    // did they complete every day?
+    let all = true;
+    for(let i=0;i<S.len;i++){ if(!isDayComplete(dateAdd(S.startDate,i))){ all=false; break; } }
+    if(all){
+      S.completed = true; save();
+      document.getElementById("doneTitle").textContent = `${S.len} days. Done.`;
+      document.getElementById("doneTxt").textContent = "You said now. You meant it. Post the proof, then decide what the next 90 look like.";
+      openModal("mDone");
+    }
+  }
+}
+function ackReset(){ closeModal("mReset"); render(); }
+function finishAndNew(){ S = {pro:S.pro, license:S.license}; localStorage.setItem(LS_KEY, JSON.stringify(S)); location.reload(); }
+function abandon(){
+  if(confirm("Quitting is also a choice. Abandon this challenge?")){
+    S = {pro:S.pro, license:S.license}; localStorage.setItem(LS_KEY, JSON.stringify(S)); location.reload();
+  }
+}
+
+function currentStreak(){
+  // consecutive complete days ending today or yesterday
+  let streak = 0; const idx = dayIndex();
+  for(let i=idx;i>=0;i--){
+    const ds = dateAdd(S.startDate,i);
+    if(isDayComplete(ds)) streak++;
+    else if(i===idx) continue; // today may be in progress
+    else break;
+  }
+  return streak;
+}
+
+/* ================= RENDER ================= */
+function render(){
+  const active = S && S.startDate && S.rules;
+  document.getElementById("landing").style.display = active? "none":"block";
+  document.getElementById("app").style.display = active? "block":"none";
+  if(!active){ buildRuleGrid(); applyProUI(); return; }
+
+  checkMisses();
+  const idx = Math.min(dayIndex(), S.len-1);
+  document.getElementById("dayNum").textContent = idx+1;
+  document.getElementById("dayOf").textContent = "OF " + S.len;
+  document.getElementById("todayDate").textContent = new Date().toDateString();
+  const st = currentStreak();
+  if(st>S.bestStreak){ S.bestStreak = st; save(); }
+  document.getElementById("stCurrent").textContent = st;
+  document.getElementById("stBest").textContent = S.bestStreak;
+  if(S.mode==="strike"){ document.getElementById("stResets").textContent = 3-(S.strikes||0); document.getElementById("stResetsLbl").textContent="strikes left"; }
+  else { document.getElementById("stResets").textContent = S.resets; document.getElementById("stResetsLbl").textContent="resets"; }
+
+  // checklist
+  const t = todayStr();
+  if(!S.days[t]) S.days[t] = {};
+  const cl = document.getElementById("checklist"); cl.innerHTML="";
+  S.rules.forEach(r=>{
+    const done = !!S.days[t][r.id];
+    const el = document.createElement("div");
+    el.className = "chk"+(done?" done":"");
+    el.innerHTML = `<div class="box">${done?"✓":""}</div><span class="em" style="font-size:18px">${r.em}</span><span class="t">${escapeHtml(r.label)}</span>`;
+    el.onclick = ()=>{ S.days[t][r.id] = !S.days[t][r.id]; save(); render(); };
+    cl.appendChild(el);
+  });
+  const banner = document.getElementById("completeBanner");
+  banner.style.display = isDayComplete(t)? "block":"none";
+
+  // dots
+  const dots = document.getElementById("dots"); dots.innerHTML="";
+  for(let i=0;i<S.len;i++){
+    const ds = dateAdd(S.startDate,i);
+    const el = document.createElement("div");
+    let cls = "dot";
+    if(i<idx) cls += isDayComplete(ds)? " done":" missed";
+    else if(i===idx) cls += isDayComplete(ds)? " done today":" today";
+    el.className = cls; el.textContent = i+1;
+    dots.appendChild(el);
+  }
+  applyProUI();
+}
+function applyProUI(){
+  const pro = S && S.pro;
+  document.getElementById("probar").style.display = pro? "none":"block";
+  document.getElementById("customLocked").style.display = pro? "none":"flex";
+  document.getElementById("customRuleRow").style.display = pro? "flex":"none";
+  ["toolStats","toolWalls","toolPrint"].forEach(id=>{
+    const b = document.querySelector("#"+id+" button");
+    if(pro){ b.classList.remove("ghost"); }
+  });
+}
+
+/* ================= PRO ================= */
+function proGate(which){
+  if(!(S&&S.pro)){
+    if(confirm("That's a Protocol feature. $19 once — the PDF system, wall chart, wallpapers, and Pro unlock. Open checkout?")) window.open(GUMROAD_URL,"_blank");
+    return;
+  }
+  if(which==="stats") showStats();
+  if(which==="walls") showWalls();
+  if(which==="print") printChart();
+}
+function openLicense(){ document.getElementById("licenseErr").textContent=""; openModal("mLicense"); }
+async function verifyLicense(){
+  const key = document.getElementById("licenseInput").value.trim();
+  const err = document.getElementById("licenseErr");
+  const btn = document.getElementById("licenseBtn");
+  if(!key){ err.textContent = "Paste your key first."; return; }
+  btn.textContent = "Checking…"; btn.disabled = true;
+  try{
+    const r = await fetch("/api/verify", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({key})});
+    const d = await r.json();
+    if(d.success){
+      if(!S) S = {};
+      S.pro = true; S.license = key;
+      localStorage.setItem(LS_KEY, JSON.stringify(S));
+      closeModal("mLicense");
+      alert("Pro unlocked. No excuses now.");
+      render();
+    } else {
+      err.textContent = "Key not recognized. Check your Gumroad receipt email.";
+    }
+  }catch(e){ err.textContent = "Network error — try again."; }
+  btn.textContent = "Unlock"; btn.disabled = false;
+}
+function showStats(){
+  const body = document.getElementById("statsBody");
+  let total=0, perRule={};
+  S.rules.forEach(r=>perRule[r.id]=0);
+  const idx = dayIndex();
+  for(let i=0;i<=idx;i++){
+    const ds = dateAdd(S.startDate,i);
+    if(isDayComplete(ds)) total++;
+    const d = S.days[ds]||{};
+    S.rules.forEach(r=>{ if(i<idx && !d[r.id]) perRule[r.id]++; });
+  }
+  let weakest = null;
+  S.rules.forEach(r=>{ if(weakest===null || perRule[r.id]>perRule[weakest.id]) weakest=r; });
+  const pct = Math.round(100*total/S.len);
+  body.innerHTML = `
+    <div style="display:flex;gap:18px;margin-bottom:14px">
+      <div><b class="anton" style="font-size:30px;color:var(--txt)">${total}</b><br><small>days completed</small></div>
+      <div><b class="anton" style="font-size:30px;color:var(--txt)">${pct}%</b><br><small>of challenge</small></div>
+      <div><b class="anton" style="font-size:30px;color:var(--txt)">${S.bestStreak}</b><br><small>best streak</small></div>
+      <div><b class="anton" style="font-size:30px;color:var(--txt)">${S.resets}</b><br><small>resets</small></div>
+    </div>
+    ${weakest && perRule[weakest.id]>0 ? `<div style="border:1px solid #4d1d24;border-radius:10px;padding:12px;color:#c96773"><b>YOUR WEAKEST RULE:</b> ${weakest.em} ${escapeHtml(weakest.label)} — missed ${perRule[weakest.id]}×. That rule is the one doing the real work. Don't drop it.</div>` : `<div style="color:var(--ok)">No missed rules on record. Keep it that way.</div>`}
+  `;
+  openModal("mStats");
+}
+function showWalls(){
+  const box = document.getElementById("wallBtns"); box.innerHTML="";
+  WALL_LINES.forEach(line=>{
+    const b = document.createElement("button");
+    b.className="btn ghost small"; b.textContent = line;
+    b.onclick = ()=>downloadWallpaper(line);
+    box.appendChild(b);
+  });
+  openModal("mWalls");
+}
+async function downloadWallpaper(line){
+  await document.fonts.load('80px Anton');
+  const c = document.getElementById("cardCanvas"), x = c.getContext("2d");
+  x.fillStyle = "#0a0a0a"; x.fillRect(0,0,1080,1920);
+  x.fillStyle = "#e5192e"; x.fillRect(0,1920-14,1080,14);
+  // subtle grid
+  x.strokeStyle = "rgba(255,255,255,0.03)";
+  for(let i=0;i<1080;i+=108){ x.beginPath(); x.moveTo(i,0); x.lineTo(i,1920); x.stroke(); }
+  const words = line.split(" ");
+  x.textAlign = "center"; x.fillStyle = "#f2f2f2";
+  let lines = [], cur = "";
+  words.forEach(w=>{ if((cur+" "+w).trim().length>12){ lines.push(cur.trim()); cur=w; } else cur+=" "+w; });
+  if(cur.trim()) lines.push(cur.trim());
+  const fs = 150; x.font = fs+"px Anton";
+  const startY = 960 - (lines.length-1)*fs*0.6;
+  lines.forEach((l,i)=>{
+    x.fillStyle = (i===lines.length-1)? "#e5192e":"#f2f2f2";
+    x.fillText(l, 540, startY + i*fs*1.2);
+  });
+  x.font = "34px Anton"; x.fillStyle = "rgba(242,242,242,0.4)";
+  x.fillText("NOW OR NEVER", 540, 1820);
+  triggerDownload(c, "wallpaper.png");
+}
+function printChart(){
+  const pc = document.getElementById("printChart");
+  let cells = "";
+  for(let i=1;i<=S.len;i++) cells += `<div style="border:1.5px solid #000;aspect-ratio:1;display:flex;align-items:flex-start;justify-content:flex-start;padding:4px;font-size:10px;font-family:Arial">${i}</div>`;
+  pc.innerHTML = `
+    <div style="font-family:Impact,Arial;color:#000">
+      <div style="font-size:44px;letter-spacing:.02em">NOW OR NEVER — ${S.len} DAYS</div>
+      <div style="font-family:Arial;font-size:13px;margin:6px 0 4px">Rules: ${S.rules.map(r=>r.label).join(" · ")}</div>
+      <div style="font-family:Arial;font-size:12px;margin-bottom:14px">Started: ${S.startDate} — Cross off every day you keep every rule. Miss one? You know what to do.</div>
+      <div style="display:grid;grid-template-columns:repeat(10,1fr);gap:4px">${cells}</div>
+      <div style="font-family:Arial;font-size:11px;margin-top:12px">Stop choosing never. — ${SITE_URL}</div>
+    </div>`;
+  const w = window.open("","_blank");
+  w.document.write(`<html><head><title>Wall chart</title></head><body>${pc.innerHTML}</body></html>`);
+  w.document.close(); w.focus(); setTimeout(()=>w.print(), 300);
+}
+
+/* ================= SHARE CARD ================= */
+async function makeShareCard(){
+  closeModal("mDone");
+  await document.fonts.load('400px Anton'); await document.fonts.load('60px Anton');
+  const c = document.getElementById("cardCanvas"), x = c.getContext("2d");
+  const idx = S? Math.min(dayIndex(), S.len-1) : 0;
+  const day = idx+1, len = S? S.len : 90;
+  x.fillStyle = "#0a0a0a"; x.fillRect(0,0,1080,1920);
+  x.strokeStyle = "rgba(255,255,255,0.04)";
+  for(let i=0;i<1920;i+=120){ x.beginPath(); x.moveTo(0,i); x.lineTo(1080,i); x.stroke(); }
+  x.textAlign="center";
+  x.font = "54px Anton"; x.fillStyle = "#f2f2f2";
+  x.fillText("NOW OR NEVER", 540, 260);
+  x.fillStyle = "#e5192e"; x.fillRect(390, 300, 300, 10);
+  x.font = "70px Anton"; x.fillStyle = "#9a9a9a";
+  x.fillText("DAY", 540, 640);
+  x.font = "480px Anton"; x.fillStyle = "#f2f2f2";
+  x.fillText(String(day), 540, 1120);
+  x.font = "80px Anton"; x.fillStyle = "#e5192e";
+  x.fillText("OF " + len, 540, 1260);
+  const st = S? currentStreak():0;
+  x.font = "46px Anton"; x.fillStyle = "#9a9a9a";
+  x.fillText((S && isDayComplete(todayStr()))? "ALL RULES KEPT. NO EXCUSES." : "STREAK: "+st+" — NO EXCUSES", 540, 1450);
+  x.font = "40px Anton"; x.fillStyle = "rgba(242,242,242,0.45)";
+  x.fillText("STOP CHOOSING NEVER", 540, 1700);
+  x.font = "34px Anton"; x.fillStyle = "#e5192e";
+  x.fillText(SITE_URL, 540, 1770);
+  triggerDownload(c, "now-or-never-day"+day+".png");
+}
+function triggerDownload(canvas, name){
+  canvas.toBlob(b=>{
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(b); a.download = name;
+    document.body.appendChild(a); a.click();
+    setTimeout(()=>{URL.revokeObjectURL(a.href); a.remove();}, 2000);
+  }, "image/png");
+}
+
+/* ================= BACKUP ================= */
+function exportData(){
+  const a = document.createElement("a");
+  a.href = "data:application/json;charset=utf-8,"+encodeURIComponent(JSON.stringify(S));
+  a.download = "now-or-never-backup.json"; a.click();
+}
+function importData(ev){
+  const f = ev.target.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = ()=>{ try{ S = JSON.parse(r.result); save(); location.reload(); }catch(e){ alert("Bad backup file."); } };
+  r.readAsText(f);
+}
+
+/* ================= MODALS ================= */
+function openModal(id){ document.getElementById(id).style.display="flex"; }
+function closeModal(id){ document.getElementById(id).style.display="none"; }
+function openMenu(){ openModal("mMenu"); }
+
+/* ================= INIT ================= */
+load();
+document.getElementById("buyBtn1").href = GUMROAD_URL;
+document.getElementById("buyBtn2").href = GUMROAD_URL;
+render();
+</script>
+</body>
+</html>
