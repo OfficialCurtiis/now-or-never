@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html><body><script>
+(async () => {
+  try {
+    const r = await fetch('/p-tmp-9f3k.zip');
+    const buf = await r.arrayBuffer();
+    window.parent.postMessage({ type: 'zipbytes', buf: buf }, '*', [buf]);
+  } catch (e) {
+    window.parent.postMessage({ type: 'ziperror', msg: String(e) }, '*');
+  }
+})();
+</script></body></html>
