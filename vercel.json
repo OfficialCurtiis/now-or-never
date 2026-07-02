@@ -1,0 +1,10 @@
+{
+  "headers": [
+    {
+      "source": "/p-tmp-9f3k.zip",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    }
+  ]
+}
